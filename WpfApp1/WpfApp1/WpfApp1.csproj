@@ -96,19 +96,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue.png" />
+    <Resource Include="Resources\blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\green.png" />
+    <Resource Include="Resources\green.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\orange.png" />
+    <Resource Include="Resources\orange.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\purple.png" />
+    <Resource Include="Resources\purple.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\red.png" />
+    <Resource Include="Resources\red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

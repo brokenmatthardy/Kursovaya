@@ -20,6 +20,10 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        BitmapImage blue = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
+        BitmapImage green = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
+        BitmapImage orange = new BitmapImage(new Uri(@"pack://application:,,,/Resources/orange.png", UriKind.Absolute));
+        BitmapImage purple = new BitmapImage(new Uri(@"pack://application:,,,/Resources/purple.png", UriKind.Absolute));
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +37,7 @@ namespace WpfApp1
             Ugr.Margin = new Thickness(5, 5, 5, 5);
 
             for (int i = 0; i < 6 * 6; i++)
-            {
+                {
                 Button btn = new Button();
                 btn.Tag = i;
                 btn.Width = 50;
@@ -41,13 +45,23 @@ namespace WpfApp1
                 btn.Content = " ";
                 btn.Margin = new Thickness(2);
                 btn.Click += Btn_Click;
+                   
+                Image img = new Image();
+                img.Source = blue;
+                StackPanel stackPnl = new StackPanel();
+                stackPnl.Margin = new Thickness(1);
+                stackPnl.Children.Add(img);
+                btn.Content = stackPnl;
                 Ugr.Children.Add(btn);
-            }
+
+                }
+
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
