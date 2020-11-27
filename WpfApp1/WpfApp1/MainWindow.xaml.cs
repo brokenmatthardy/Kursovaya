@@ -36,23 +36,37 @@ namespace WpfApp1
 
             Ugr.Margin = new Thickness(5, 5, 5, 5);
 
-            for (int i = 0; i < 6 * 6; i++)
+            for (int i = 0; i < 6; i++)
+                for(int j = 0; j < 6; j++)
                 {
                 Button btn = new Button();
-                btn.Tag = i;
-                btn.Width = 50;
-                btn.Height = 50;
-                btn.Content = " ";
-                btn.Margin = new Thickness(2);
-                btn.Click += Btn_Click;
-                   
-                Image img = new Image();
-                img.Source = blue;
-                StackPanel stackPnl = new StackPanel();
-                stackPnl.Margin = new Thickness(1);
-                stackPnl.Children.Add(img);
-                btn.Content = stackPnl;
-                Ugr.Children.Add(btn);
+
+                    btn.Tag = i;
+                    btn.Width = 50;
+                    btn.Height = 50;
+                    btn.Content = " ";
+                    btn.Margin = new Thickness(2);
+
+                    btn.Click += Btn_Click;
+
+                    Image img = new Image();
+
+                    if ((i == 5) && (j == 5))
+                    {
+                        img.Source = blue;
+                    }
+                    else
+                    {
+                        img.Source = purple;
+
+                    }
+                    
+                    
+                    StackPanel stackPnl = new StackPanel();
+                    stackPnl.Margin = new Thickness(1);
+                    stackPnl.Children.Add(img);
+                    btn.Content = stackPnl;
+                    Ugr.Children.Add(btn);
 
                 }
 

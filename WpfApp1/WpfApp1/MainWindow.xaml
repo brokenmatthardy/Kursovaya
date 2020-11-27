@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="TriVRyad" Height="450" Width="485.233">
+        Title="TriVRyad" Height="675.6" Width="728.833">
     <Grid>
         <Button Content="Start" HorizontalAlignment="Left" Margin="30,24,0,0" VerticalAlignment="Top" Width="108" Height="37" Click="Button_Click"/>
-        <UniformGrid x:Name="Ugr" Margin="10,66,10.2,10">
-            
+        <UniformGrid x:Name="Ugr" Margin="10,178,10.4,9.6">
+
         </UniformGrid>
     </Grid>
 </Window>
