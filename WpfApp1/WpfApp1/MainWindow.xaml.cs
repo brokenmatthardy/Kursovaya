@@ -26,8 +26,7 @@ namespace WpfApp1
         BitmapImage purplePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/purple.png", UriKind.Absolute));
         BitmapImage redPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/red.png", UriKind.Absolute));
 
-
-        List<BitmapImage> imgs = new List<BitmapImage>(); 
+        List<BitmapImage> imgs = new List<BitmapImage>();
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +36,6 @@ namespace WpfApp1
             imgs.Add(orangePic);
             imgs.Add(purplePic);
             imgs.Add(redPic);
-
 
             Ugr.Rows = 6;
             Ugr.Columns = 6;
@@ -53,7 +51,6 @@ namespace WpfApp1
                 for(int j = 0; j < 6; j++)
                 {
                 Button btn = new Button();
-
                     btn.Tag = i;
                     btn.Width = 50;
                     btn.Height = 50;
@@ -62,16 +59,20 @@ namespace WpfApp1
 
                     btn.Click += Btn_Click;
 
-                    
                     StackPanel stackPnl = new StackPanel();
                     int r = rnd.Next(0, 5);
-                    stackPnl = getPanel(imgs[r]);
+                    stackPnl = getPanel(imgs[r]); ;
 
                     btn.Content = stackPnl;
                     Ugr.Children.Add(btn);
 
                 }
 
+        }
+
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         StackPanel getPanel(BitmapImage pic)
@@ -83,11 +84,6 @@ namespace WpfApp1
             sp.Children.Add(img);
             sp.Margin = new Thickness(1);
             return sp;
-        }
-        private void Btn_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
