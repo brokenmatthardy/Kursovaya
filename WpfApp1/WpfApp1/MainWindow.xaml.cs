@@ -31,42 +31,7 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            imgs.Add(bluePic);
-            imgs.Add(greenPic);
-            imgs.Add(orangePic);
-            imgs.Add(purplePic);
-            imgs.Add(redPic);
 
-            Ugr.Rows = 6;
-            Ugr.Columns = 6;
-
-            Ugr.Width = 6 * (50 + 4);
-            Ugr.Height = 6 * (50 + 4);
-
-            Ugr.Margin = new Thickness(5, 5, 5, 5);
-
-            Random rnd = new Random();
-
-            for (int i = 0; i < 6; i++)
-                for(int j = 0; j < 6; j++)
-                {
-                Button btn = new Button();
-                    btn.Tag = i;
-                    btn.Width = 50;
-                    btn.Height = 50;
-                    btn.Content = " ";
-                    btn.Margin = new Thickness(2);
-
-                    btn.Click += Btn_Click;
-
-                    StackPanel stackPnl = new StackPanel();
-                    int r = rnd.Next(0, 5);
-                    stackPnl = getPanel(imgs[r]); ;
-
-                    btn.Content = stackPnl;
-                    Ugr.Children.Add(btn);
-
-                }
 
         }
 
@@ -89,6 +54,45 @@ namespace WpfApp1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+            imgs.Add(bluePic);
+            imgs.Add(greenPic);
+            imgs.Add(orangePic);
+            imgs.Add(purplePic);
+            imgs.Add(redPic);
+            Ugr.Children.Clear();
+            Ugr.Rows = 6;
+            Ugr.Columns = 6;
+
+            Ugr.Width = 6 * (50 + 4);
+            Ugr.Height = 6 * (50 + 4);
+
+            Ugr.Margin = new Thickness(5, 5, 5, 5);
+
+            Random rnd = new Random();
+
+            for (int i = 0; i < 6; i++)
+                for (int j = 0; j < 6; j++)
+                {
+                    Button btn = new Button();
+                    btn.Tag = i;
+                    btn.Width = 50;
+                    btn.Height = 50;
+                    btn.Content = " ";
+                    btn.Margin = new Thickness(2);
+
+                    btn.Click += Btn_Click;
+
+                    StackPanel stackPnl = new StackPanel();
+                    int r = rnd.Next(0, 5);
+                    stackPnl = getPanel(imgs[r]); ;
+
+                    btn.Content = stackPnl;
+                    Ugr.Children.Add(btn);
+
+                    
+                }
+            return;
         }
+
     }
 }
