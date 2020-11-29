@@ -27,17 +27,25 @@ namespace WpfApp1
         BitmapImage redPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/red.png", UriKind.Absolute));
 
         List<BitmapImage> imgs = new List<BitmapImage>();
+        Random rnd = new Random();
+
+        Button[,] filed = new Button[6, 6];
         public MainWindow()
         {
             InitializeComponent();
-
-
 
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            int ind = ((int)((Button)sender).Tag);
+            int i = ind % 6;
+            int j = ind / 6;
+
+            StackPanel stackPnl = new StackPanel();
+            int r = rnd.Next(0, 5);
+            stackPnl = getPanel(imgs[r]);
+            filed[i, j].Content = stackPnl;
         }
 
         StackPanel getPanel(BitmapImage pic)
@@ -68,26 +76,26 @@ namespace WpfApp1
 
             Ugr.Margin = new Thickness(5, 5, 5, 5);
 
-            Random rnd = new Random();
+            
 
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 6; j++)
                 {
-                    Button btn = new Button();
-                    btn.Tag = i;
-                    btn.Width = 50;
-                    btn.Height = 50;
-                    btn.Content = " ";
-                    btn.Margin = new Thickness(2);
+                    filed[i, j] = new Button();
+                    filed[i, j].Tag = i+j*6;
+                    filed[i, j].Width = 50;
+                    filed[i, j].Height = 50;
+                    filed[i, j].Content = " ";
+                    filed[i, j].Margin = new Thickness(2);
 
-                    btn.Click += Btn_Click;
+                    filed[i, j].Click += Btn_Click;
 
                     StackPanel stackPnl = new StackPanel();
                     int r = rnd.Next(0, 5);
                     stackPnl = getPanel(imgs[r]); ;
 
-                    btn.Content = stackPnl;
-                    Ugr.Children.Add(btn);
+                    filed[i, j].Content = stackPnl;
+                    Ugr.Children.Add(filed[i, j]);
 
                     
                 }
