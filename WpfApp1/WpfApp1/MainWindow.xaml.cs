@@ -30,7 +30,9 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            
+
+
+
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -51,12 +53,12 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             imgs.Add(bluePic);
             imgs.Add(greenPic);
             imgs.Add(orangePic);
             imgs.Add(purplePic);
             imgs.Add(redPic);
-
             Ugr.Children.Clear();
             Ugr.Rows = 6;
             Ugr.Columns = 6;
@@ -82,12 +84,15 @@ namespace WpfApp1
 
                     StackPanel stackPnl = new StackPanel();
                     int r = rnd.Next(0, 5);
-                    stackPnl = getPanel(imgs[r]);
+                    stackPnl = getPanel(imgs[r]); ;
 
                     btn.Content = stackPnl;
                     Ugr.Children.Add(btn);
 
+                    
                 }
+            return;
         }
+
     }
 }
