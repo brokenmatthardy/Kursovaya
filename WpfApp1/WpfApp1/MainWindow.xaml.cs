@@ -49,29 +49,10 @@ namespace WpfApp1
 
                     btn.Click += Btn_Click;
 
+
+
                     Image img = new Image();
-
-                    if ((i == 5) && (j == 3))
-                    {
-                        img.Source = blue;
-                    }
-                    else if ((i == 2) && (j == 4))
-                    {
-                        img.Source = purple;
-
-                    }
-                    else if ((i == 3) && (j == 2))
-                    {
-                        img.Source = green;
-
-                    }
-                    else if ((i == 4) && (j == 5))
-                    {
-                        img.Source = orange;
-
-                    }
-
-
+                    img.Source = blue;
                     StackPanel stackPnl = new StackPanel();
                     stackPnl.Margin = new Thickness(1);
                     stackPnl.Children.Add(img);
