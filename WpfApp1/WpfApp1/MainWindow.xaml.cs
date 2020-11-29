@@ -66,9 +66,6 @@ namespace WpfApp1
                     StackPanel stackPnl = new StackPanel();
                     int r = rnd.Next(0, 5);
                     stackPnl = getPanel(imgs[r]);
-                    //stackPnl = getPanel(imgs[r]);
-                    //stackPnl = getPanel(imgs[r]);
-                    //stackPnl = getPanel(imgs[r]);
 
                     btn.Content = stackPnl;
                     Ugr.Children.Add(btn);
