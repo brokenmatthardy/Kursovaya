@@ -20,13 +20,24 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        BitmapImage blue = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
-        BitmapImage green = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
-        BitmapImage orange = new BitmapImage(new Uri(@"pack://application:,,,/Resources/orange.png", UriKind.Absolute));
-        BitmapImage purple = new BitmapImage(new Uri(@"pack://application:,,,/Resources/purple.png", UriKind.Absolute));
+        BitmapImage bluePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
+        BitmapImage greenPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
+        BitmapImage orangePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/orange.png", UriKind.Absolute));
+        BitmapImage purplePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/purple.png", UriKind.Absolute));
+        BitmapImage redPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/red.png", UriKind.Absolute));
+
+
+        List<BitmapImage> imgs = new List<BitmapImage>(); 
         public MainWindow()
         {
             InitializeComponent();
+
+            imgs.Add(bluePic);
+            imgs.Add(greenPic);
+            imgs.Add(orangePic);
+            imgs.Add(purplePic);
+            imgs.Add(redPic);
+
 
             Ugr.Rows = 6;
             Ugr.Columns = 6;
@@ -35,6 +46,8 @@ namespace WpfApp1
             Ugr.Height = 6 * (50 + 4);
 
             Ugr.Margin = new Thickness(5, 5, 5, 5);
+
+            Random rnd = new Random();
 
             for (int i = 0; i < 6; i++)
                 for(int j = 0; j < 6; j++)
@@ -49,32 +62,14 @@ namespace WpfApp1
 
                     btn.Click += Btn_Click;
 
-                    Image img = new Image();
-
-                    if ((i == 5) && (j == 3))
-                    {
-                        img.Source = blue;
-                    }
-                    else if ((i == 2) && (j == 4))
-                    {
-                        img.Source = purple;
-
-                    }
-                    else if ((i == 3) && (j == 2))
-                    {
-                        img.Source = green;
-
-                    }
-                    else if ((i == 4) && (j == 5))
-                    {
-                        img.Source = orange;
-
-                    }
-
-
+                    
                     StackPanel stackPnl = new StackPanel();
-                    stackPnl.Margin = new Thickness(1);
-                    stackPnl.Children.Add(img);
+                    int r = rnd.Next(0, 5);
+                    stackPnl = getPanel(imgs[r]);
+                    //stackPnl = getPanel(imgs[r]);
+                    //stackPnl = getPanel(imgs[r]);
+                    //stackPnl = getPanel(imgs[r]);
+
                     btn.Content = stackPnl;
                     Ugr.Children.Add(btn);
 
@@ -82,6 +77,16 @@ namespace WpfApp1
 
         }
 
+        StackPanel getPanel(BitmapImage pic)
+        {
+            StackPanel sp = new StackPanel();
+            Image img = new Image();
+            img.Source = pic;
+
+            sp.Children.Add(img);
+            sp.Margin = new Thickness(1);
+            return sp;
+        }
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
