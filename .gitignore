@@ -9,3 +9,5 @@ WpfApp1/WpfApp1/obj/Debug/MainWindow.baml
 WpfApp1/WpfApp1/obj/Debug/WpfApp1.csprojAssemblyReference.cache
 WpfApp1/WpfApp1/obj/Debug/WpfApp1_MarkupCompile.cache
 WpfApp1/WpfApp1/obj/Debug/WpfApp1_MarkupCompile.lref
+*.ide-shm
+*.ide-wal
