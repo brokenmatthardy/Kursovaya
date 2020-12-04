@@ -1,2 +1,11 @@
 
 *.cache
+.vs/Kursovaya/v16/.suo
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+WpfApp1/.vs/WpfApp1/v16/.suo
+WpfApp1/WpfApp1/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+WpfApp1/WpfApp1/obj/Debug/MainWindow.baml
+WpfApp1/WpfApp1/obj/Debug/WpfApp1.csprojAssemblyReference.cache
+WpfApp1/WpfApp1/obj/Debug/WpfApp1_MarkupCompile.cache
+WpfApp1/WpfApp1/obj/Debug/WpfApp1_MarkupCompile.lref
