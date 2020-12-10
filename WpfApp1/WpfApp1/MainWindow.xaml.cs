@@ -29,23 +29,12 @@ namespace WpfApp1
         List<BitmapImage> imgs = new List<BitmapImage>();
         Random rnd = new Random();
 
+        CLogic CL = null;
         Button[,] filed = new Button[6, 6];
         public MainWindow()
         {
             InitializeComponent();
 
-        }
-
-        private void Btn_Click(object sender, RoutedEventArgs e)
-        {
-            int ind = ((int)((Button)sender).Tag);
-            int i = ind % 6;
-            int j = ind / 6;
-
-            StackPanel stackPnl = new StackPanel();
-            int r = rnd.Next(0, 5);
-            stackPnl = getPanel(imgs[r]);
-            filed[i, j].Content = stackPnl;
         }
 
         StackPanel getPanel(BitmapImage pic)
@@ -59,8 +48,40 @@ namespace WpfApp1
             return sp;
         }
 
+        void updateFiled()
+        {
+
+            for (int i = 0; i < 6; i++)
+                for (int j = 0; j < 6; j++)
+                {
+                    int color = CL.getCell(i, j);
+                    StackPanel stackPnl = getPanel(imgs[color]);
+
+                    if (CL.getCell(i, j) == 1)
+                    {
+
+                    }
+
+                    filed[i, j].Content = stackPnl;
+
+                }
+        }
+
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            int ind = ((int)((Button)sender).Tag);
+            int i = ind % 6;
+            int j = ind / 6;
+
+            CL.PickUp(i, j);
+            CL.findLargest(j, i);
+            updateFiled();
+        }
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            start.Content = "Restart";
 
             imgs.Add(bluePic);
             imgs.Add(greenPic);
@@ -75,32 +96,32 @@ namespace WpfApp1
             Ugr.Height = 6 * (50 + 4);
 
             Ugr.Margin = new Thickness(5, 5, 5, 5);
+            int[,] mast = new int[6, 6];
 
-            
 
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 6; j++)
                 {
                     filed[i, j] = new Button();
-                    filed[i, j].Tag = i+j*6;
+                    filed[i, j].Tag = i + j * 6;
                     filed[i, j].Width = 50;
                     filed[i, j].Height = 50;
                     filed[i, j].Content = " ";
                     filed[i, j].Margin = new Thickness(2);
-
                     filed[i, j].Click += Btn_Click;
-
                     StackPanel stackPnl = new StackPanel();
+
                     int r = rnd.Next(0, 5);
-                    stackPnl = getPanel(imgs[r]); ;
+                    mast[i, j] = r;
+
+                    Ugr.Children.Add(filed[i, j]);
+                    stackPnl = getPanel(imgs[r]);
 
                     filed[i, j].Content = stackPnl;
-                    Ugr.Children.Add(filed[i, j]);
-
-                    
                 }
+            CL = new CLogic(mast);
             return;
-        }
 
+        }
     }
 }
