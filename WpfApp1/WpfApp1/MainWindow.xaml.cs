@@ -20,6 +20,8 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static int N = 6;
+
         BitmapImage bluePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
         BitmapImage greenPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
         BitmapImage orangePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/orange.png", UriKind.Absolute));
@@ -74,7 +76,7 @@ namespace WpfApp1
             int j = ind / 6;
 
             CL.PickUp(i, j);
-            CL.findLargest(j, i);
+            CL.findLargest(i, j);
             updateFiled();
         }
 
@@ -96,28 +98,28 @@ namespace WpfApp1
             Ugr.Height = 6 * (50 + 4);
 
             Ugr.Margin = new Thickness(5, 5, 5, 5);
-            int[,] mast = new int[6, 6];
+            int[,] mast = new int[N, N];
 
 
-            for (int i = 0; i < 6; i++)
-                for (int j = 0; j < 6; j++)
+            for (int y = 0; y < N; y++)
+                for (int x = 0; x < N; x++)
                 {
-                    filed[i, j] = new Button();
-                    filed[i, j].Tag = i + j * 6;
-                    filed[i, j].Width = 50;
-                    filed[i, j].Height = 50;
-                    filed[i, j].Content = " ";
-                    filed[i, j].Margin = new Thickness(2);
-                    filed[i, j].Click += Btn_Click;
+                    filed[x, y] = new Button();
+                    filed[x, y].Tag = x + y * 6;
+                    filed[x, y].Width = 50;
+                    filed[x, y].Height = 50;
+                    filed[x, y].Content = " ";
+                    filed[x, y].Margin = new Thickness(2);
+                    filed[x, y].Click += Btn_Click;
                     StackPanel stackPnl = new StackPanel();
 
                     int r = rnd.Next(0, 5);
-                    mast[i, j] = r;
+                    mast[x, y] = r;
 
-                    Ugr.Children.Add(filed[i, j]);
+                    Ugr.Children.Add(filed[x, y]);
                     stackPnl = getPanel(imgs[r]);
 
-                    filed[i, j].Content = stackPnl;
+                    filed[x, y].Content = stackPnl;
                 }
             CL = new CLogic(mast);
             return;
