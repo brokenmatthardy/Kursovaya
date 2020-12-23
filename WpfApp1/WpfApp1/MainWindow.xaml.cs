@@ -20,7 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static int N = 6;
+        public static int N = 6; //размер поля
 
         BitmapImage bluePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
         BitmapImage greenPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
@@ -39,7 +39,7 @@ namespace WpfApp1
 
         }
 
-        StackPanel getPanel(BitmapImage pic)
+        StackPanel getPanel(BitmapImage pic)//функция для добавления картинок
         {
             StackPanel sp = new StackPanel();
             Image img = new Image();
@@ -50,7 +50,7 @@ namespace WpfApp1
             return sp;
         }
 
-        void updateFiled()
+        void updateFiled()//функция обновления поля
         {
 
             for (int i = 0; i < 6; i++)
@@ -69,19 +69,18 @@ namespace WpfApp1
                 }
         }
 
-        private void Btn_Click(object sender, RoutedEventArgs e)
+        private void Btn_Click(object sender, RoutedEventArgs e)//Кнопки в ячейках
         {
             int ind = ((int)((Button)sender).Tag);
             int i = ind % 6;
             int j = ind / 6;
 
             CL.PickUp(i, j);
-            CL.findLargest(i, j);
             updateFiled();
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //генерация поля
         {
             start.Content = "Restart";
 
