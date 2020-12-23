@@ -106,5 +106,43 @@ namespace WpfApp1
             }
         }
 
+        public void checkChain(int minChain)
+        {
+            List<Point> resX = new List<Point>();
+            List<Point> resY = new List<Point>();
+            List<Point> res = new List<Point>();
+            for (int x = 0; x < 6; x++)
+                for (int y = 0; y < 6; y++)
+                {
+                    resX.Clear();
+                    resX.Add(new Point(x, y));
+                    chainFinderX(resX, x, y);
+                    //x += resX.Count - 1;
+
+
+                    resY.Clear();
+                    resY.Add(new Point(x, y));
+                    chainFinderY(resY, x, y);
+                    //y += resY.Count - 1;
+
+                    if (resX.Count >= minChain)
+                    {
+                        res.AddRange(resX);
+                    }
+                    if (resY.Count >= minChain)
+                    {
+                        res.AddRange(resY);
+                    }
+                }
+            if (res != null)
+            {
+                //Thread.Sleep(500);
+                foreach (Point p in res)
+                {
+                    filed[(int)p.X, (int)p.Y] = 0;
+                }
+            }
+        }
+
     }
 }

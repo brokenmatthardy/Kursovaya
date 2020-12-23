@@ -22,6 +22,7 @@ namespace WpfApp1
     {
         public static int N = 6; //размер поля
 
+        BitmapImage voidPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/void.png", UriKind.Absolute));
         BitmapImage bluePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
         BitmapImage greenPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
         BitmapImage orangePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/orange.png", UriKind.Absolute));
@@ -33,6 +34,7 @@ namespace WpfApp1
 
         CLogic CL = null;
         Button[,] filed = new Button[6, 6];
+        int minChain = 3;
         public MainWindow()
         {
             InitializeComponent();
@@ -72,10 +74,11 @@ namespace WpfApp1
         private void Btn_Click(object sender, RoutedEventArgs e)//Кнопки в ячейках
         {
             int ind = ((int)((Button)sender).Tag);
-            int i = ind % N;
-            int j = ind / N;
+            int x = ind % N;
+            int y = ind / N;
 
-            CL.PickUp(i, j);
+            CL.PickUp(x, y);
+            CL.checkChain(minChain);
             updateFiled();
         }
 
@@ -84,6 +87,7 @@ namespace WpfApp1
         {
             start.Content = "Restart";
 
+            imgs.Add(voidPic);
             imgs.Add(bluePic);
             imgs.Add(greenPic);
             imgs.Add(orangePic);
@@ -99,7 +103,6 @@ namespace WpfApp1
             Ugr.Margin = new Thickness(5, 5, 5, 5);
             int[,] mast = new int[N, N];
 
-
             for (int y = 0; y < N; y++)
                 for (int x = 0; x < N; x++)
                 {
@@ -112,7 +115,7 @@ namespace WpfApp1
                     filed[x, y].Click += Btn_Click;
                     StackPanel stackPnl = new StackPanel();
 
-                    int r = rnd.Next(0, 5);
+                    int r = rnd.Next(1, 6);
                     mast[x, y] = r;
 
                     Ugr.Children.Add(filed[x, y]);
@@ -122,12 +125,12 @@ namespace WpfApp1
                 }
             CL = new CLogic(mast);
             return;
-
         }
 
         private void Finde_Click(object sender, RoutedEventArgs e)
         {
-
+            CL.checkChain(minChain);
+            updateFiled();
         }
     }
 }
