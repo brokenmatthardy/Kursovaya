@@ -53,8 +53,8 @@ namespace WpfApp1
         void updateFiled()//функция обновления поля
         {
 
-            for (int i = 0; i < 6; i++)
-                for (int j = 0; j < 6; j++)
+            for (int i = 0; i < N; i++)
+                for (int j = 0; j < N; j++)
                 {
                     int color = CL.getCell(i, j);
                     StackPanel stackPnl = getPanel(imgs[color]);
@@ -72,8 +72,8 @@ namespace WpfApp1
         private void Btn_Click(object sender, RoutedEventArgs e)//Кнопки в ячейках
         {
             int ind = ((int)((Button)sender).Tag);
-            int i = ind % 6;
-            int j = ind / 6;
+            int i = ind % N;
+            int j = ind / N;
 
             CL.PickUp(i, j);
             updateFiled();
@@ -93,8 +93,8 @@ namespace WpfApp1
             Ugr.Rows = 6;
             Ugr.Columns = 6;
 
-            Ugr.Width = 6 * (50 + 4);
-            Ugr.Height = 6 * (50 + 4);
+            Ugr.Width = N * (50 + 4);
+            Ugr.Height = N * (50 + 4);
 
             Ugr.Margin = new Thickness(5, 5, 5, 5);
             int[,] mast = new int[N, N];
@@ -122,6 +122,11 @@ namespace WpfApp1
                 }
             CL = new CLogic(mast);
             return;
+
+        }
+
+        private void Finde_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

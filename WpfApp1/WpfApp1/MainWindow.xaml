@@ -11,5 +11,6 @@
         <UniformGrid x:Name="Ugr" Margin="10,178,10.4,9.6">
 
         </UniformGrid>
+        <Button x:Name="Finde" Content="Finde" HorizontalAlignment="Left" Height="37" Margin="175,24,0,0" VerticalAlignment="Top" Width="108" Click="Finde_Click"/>
     </Grid>
 </Window>
