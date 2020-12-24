@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WpfApp1
 {
@@ -14,10 +15,13 @@ namespace WpfApp1
         int[,] filed = new int[6, 6];
         Points picked = null;
         Random rnd = new Random();
+        int score = 0;
+        TextBlock m_score = null;
 
-        public CLogic(int[,] field)
+        public CLogic(int[,] field, TextBlock m_score)
         {
             filed = field;
+            this.m_score = m_score;
         }
 
         public class Points
@@ -117,13 +121,11 @@ namespace WpfApp1
                     resX.Clear();
                     resX.Add(new Point(x, y));
                     chainFinderX(resX, x, y);
-                    //x += resX.Count - 1;
 
 
                     resY.Clear();
                     resY.Add(new Point(x, y));
                     chainFinderY(resY, x, y);
-                    //y += resY.Count - 1;
 
                     if (resX.Count >= minChain)
                     {
@@ -134,14 +136,38 @@ namespace WpfApp1
                         res.AddRange(resY);
                     }
                 }
-            if (res != null)
-            {
-                //Thread.Sleep(500);
                 foreach (Point p in res)
                 {
                     filed[(int)p.X, (int)p.Y] = 0;
                 }
-            }
+            score += 25 * res.Count;
+            m_score.Text = " " + score;
+        }
+        public void Score()
+        {
+            m_score.Text = null;
+        }
+
+        public void shift(int start, int sh) //start - начало сдвига, sh на сколько сдвигаем
+        {
+            int i, j, x, y;
+            for (i = start, x = start + sh; x < 6; i++, x++)
+                for (j = start, y = start + sh; y < 6; j++, y++)
+
+                {
+                    filed[i, j] = filed[x, y];
+                    filed[x, y] = 0;
+                }
+            fill(i);
+        }
+        //функция заполнения новыми элементами
+        public void fill(int start)
+        {
+            for (int x = start; x < 6; x++)
+                for (int y = start; y < 6; y++)
+                {
+                    filed[x, y] = rnd.Next(1, 6);
+                }
         }
 
     }

@@ -123,7 +123,8 @@ namespace WpfApp1
 
                     filed[x, y].Content = stackPnl;
                 }
-            CL = new CLogic(mast);
+            CL = new CLogic(mast, score);
+            CL.Score();
             return;
         }
 
