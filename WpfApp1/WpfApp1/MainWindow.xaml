@@ -26,7 +26,9 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label Content="Очки :" HorizontalAlignment="Left" Height="37" Margin="318,29,0,0" VerticalAlignment="Top" Width="73" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
-        <TextBlock x:Name="score" HorizontalAlignment="Left" Height="37" Margin="377,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Content="Очки :" HorizontalAlignment="Left" Height="37" Margin="304,26,0,0" VerticalAlignment="Top" Width="73" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="score" HorizontalAlignment="Left" Height="37" Margin="377,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <Label x:Name="tim" Content="" HorizontalAlignment="Left" Height="37" Margin="625,24,0,0" VerticalAlignment="Top" Width="73" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic" RenderTransformOrigin="0.479,0.297"/>
+        <Label Content="До конца игры: " HorizontalAlignment="Left" Height="37" Margin="472,24,0,0" VerticalAlignment="Top" Width="148" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Window>

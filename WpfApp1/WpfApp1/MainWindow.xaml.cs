@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -21,6 +22,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         public static int N = 6; //размер поля
+        DispatcherTimer Timer;
 
         BitmapImage voidPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/void.png", UriKind.Absolute));
         BitmapImage bluePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
@@ -31,10 +33,12 @@ namespace WpfApp1
 
         List<BitmapImage> imgs = new List<BitmapImage>();
         Random rnd = new Random();
-
         CLogic CL = null;
         Button[,] filed = new Button[6, 6];
+
         int minChain = 3;
+        int timeend = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -125,7 +129,26 @@ namespace WpfApp1
                 }
             CL = new CLogic(mast, score);
             CL.Score();
+
+            Timer = new DispatcherTimer();
+            Timer.Tick += new EventHandler(end_Tick);
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            timeend = 120;
+            tim.Content = null;
+            Timer.Start();
+
             return;
+        }
+
+        private void end_Tick(object sender, EventArgs e)
+        {
+            if (timeend > 0)
+            {
+                timeend--;
+                tim.Content = timeend + "s";
+            }
+            else
+            Timer.Stop();
         }
 
         private void Finde_Click(object sender, RoutedEventArgs e)
