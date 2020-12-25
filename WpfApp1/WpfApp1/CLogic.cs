@@ -18,13 +18,17 @@ namespace WpfApp1
         int score = 0;
         TextBlock m_score = null;
         TextBlock Move = null;
-        int MoveCount = 30;
+        ListBox RecordList;
+        TextBox Name;
+        int MoveCount = 5;
 
-        public CLogic(int[,] field, TextBlock m_score, TextBlock Move)
+        public CLogic(int[,] field, TextBlock m_score, TextBlock Move, ListBox RecordList, TextBox Name)
         {
             filed = field;
             this.m_score = m_score;
             this.Move = Move;
+            this.RecordList = RecordList;
+            this.Name = Name;
         }
 
         public class Points
@@ -66,6 +70,7 @@ namespace WpfApp1
                     if (MoveCount == 0)
                     {
                         MessageBox.Show("Ходы закончились !");
+                        RecordList.Items.Add(Name.Text + ":" + score);
                     }
                     else
                     {

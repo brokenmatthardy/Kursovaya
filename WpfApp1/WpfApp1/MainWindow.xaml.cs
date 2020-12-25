@@ -123,8 +123,8 @@ namespace WpfApp1
 
                     filed[x, y].Content = stackPnl;
                 }
-            scorelist.Items.Add(namebox.Text + ":" + score.Text + " очков");
-            CL = new CLogic(mast, score, Move);
+            //scorelist.Items.Add(namebox.Text + ":" + score.Text + " очков");
+            CL = new CLogic(mast, score, Move, scorelist, namebox);
             CL.Score();
             CL.move();
         }
