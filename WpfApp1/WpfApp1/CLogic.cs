@@ -21,7 +21,7 @@ namespace WpfApp1
         TextBlock Move = null;
         ListBox RecordList;
         TextBox Name;
-        int MoveCount = 5;
+        int MoveCount = 20;
 
         public CLogic(int[,] field, TextBlock m_score, TextBlock Move, ListBox RecordList, TextBox Name)
         {
@@ -158,31 +158,50 @@ namespace WpfApp1
                 {
                     filed[(int)p.X, (int)p.Y] = 0;
                 }
+            shift();
             score += 25 * res.Count;
             m_score.Text = " " + score;
         }
         public void Score()
         {
-            m_score.Text = null;
+            m_score.Text = "0";
         }
 
         public void move()
         {
-            Move.Text = null;
+            Move.Text = "20";
         }
 
-        public void shift(int start, int sh) //start - начало сдвига, sh на сколько сдвигаем
+        public void shift()
         {
-            int i, j, x, y;
-            for (i = start, x = start + sh; x < 6; i++, x++)
-                for (j = start, y = start + sh; y < 6; j++, y++)
-
+            for (int x = 0; x < 6; x++)
+                for (int y = 5; y >= 0; y--)
                 {
-                    filed[i, j] = filed[x, y];
-                    filed[x, y] = 0;
+                    if (filed[x, y] == 0)
+                    {
+                        for (int y2 = y - 1; y2 >= 0; y2--)
+                        {
+                            if (filed[x, y2] != 0)
+                            {
+                                filed[x, y] = filed[x, y2];
+                                filed[x, y2] = 0;
+                                break;
+                            }
+                        }
+                    }
                 }
-            fill(i);
         }
+
+        //public void shift(int start, int sh) //start - начало сдвига, sh на сколько сдвигаем
+        //{
+        //    int i, j, x, y;
+        //    for (i = start, x = start + sh; x < 6; i++, x++)
+        //        for (j = start, y = start + sh; y < 6; j++, y++)
+        //        {
+        //            filed[i, j] = filed[x, y];
+        //            filed[x, y] = 0;
+        //        }
+        //}
         //функция заполнения новыми элементами
         public void fill(int start)
         {
