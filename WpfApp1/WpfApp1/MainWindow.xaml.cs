@@ -21,9 +21,6 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static int N = 6; //размер поля
-        DispatcherTimer Timer;
-
         BitmapImage voidPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/void.png", UriKind.Absolute));
         BitmapImage bluePic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/blue.png", UriKind.Absolute));
         BitmapImage greenPic = new BitmapImage(new Uri(@"pack://application:,,,/Resources/green.png", UriKind.Absolute));
@@ -37,8 +34,7 @@ namespace WpfApp1
         Button[,] filed = new Button[6, 6];
 
         int minChain = 3;
-        int timeend = 0;
-        public TimeSpan Interval;
+        public static int N = 6; //размер поля
 
         public MainWindow()
         {
@@ -127,41 +123,16 @@ namespace WpfApp1
 
                     filed[x, y].Content = stackPnl;
                 }
+            scorelist.Items.Add(namebox.Text + ":" + score.Text + " очков");
             CL = new CLogic(mast, score, Move);
             CL.Score();
             CL.move();
-
-            //Timer = null;
-            //Timer = new DispatcherTimer();
-            //Timer.Tick += new EventHandler(timer_Tick);
-            //reset();
-            //return;
         }
-
-        //private void timer_Tick(object sender, EventArgs e)
-        //{
-        //    if (timeend > 0)
-        //    {
-        //        timeend--;
-        //        tim.Content = timeend + "s";
-        //    }
-        //    else
-        //    Timer.Stop();
-        //}
 
         private void Finde_Click(object sender, RoutedEventArgs e)
         {
             CL.checkChain(minChain);
             updateFiled();
         }
-
-        //private void reset()
-        //{
-        //    Timer.Stop();
-        //    Timer.Interval = new TimeSpan(0, 0, 1);
-        //    timeend = 100;
-        //    Timer.Start();
-        //}
-
     }
 }

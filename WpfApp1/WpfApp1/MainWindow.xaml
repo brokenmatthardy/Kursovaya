@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="TriVRyad" Height="675.6" Width="728.833">
+        Title="TriVRyad" Height="675.6" Width="968.916">
     <Grid>
         <Button x:Name="start" Content="Start" HorizontalAlignment="Left" Margin="30,24,0,0" VerticalAlignment="Top" Width="108" Height="37" Click="Button_Click">
             <Button.Background>
@@ -15,7 +15,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <UniformGrid x:Name="Ugr" Margin="10,178,10.4,9.6">
+        <UniformGrid x:Name="Ugr" Margin="10,178,341,10">
 
         </UniformGrid>
         <Button x:Name="Finde" Content="Finde" HorizontalAlignment="Left" Height="37" Margin="175,24,0,0" VerticalAlignment="Top" Width="108" Click="Finde_Click">
@@ -27,8 +27,12 @@
             </Button.Background>
         </Button>
         <Label Content="Очки :" HorizontalAlignment="Left" Height="37" Margin="304,26,0,0" VerticalAlignment="Top" Width="73" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
-        <TextBlock x:Name="score" HorizontalAlignment="Left" Height="37" Margin="377,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
-        <Label Content="Осталось ходов: " HorizontalAlignment="Left" Height="37" Margin="464,24,0,0" VerticalAlignment="Top" Width="156" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="score" HorizontalAlignment="Left" Height="37" Margin="363,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Content="Осталось ходов: " HorizontalAlignment="Left" Height="37" Margin="464,24,0,0" VerticalAlignment="Top" Width="166" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
         <TextBlock x:Name="Move" HorizontalAlignment="Left" Height="32" Margin="620,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" FontFamily="Tekton Pro Cond" FontSize="18"/>
+        <ListBox x:Name="scorelist" HorizontalAlignment="Left" Height="327" Margin="655,158,0,0" VerticalAlignment="Top" Width="260"/>
+        <Label Content="Таблица рекордов: " HorizontalAlignment="Left" Height="37" Margin="655,116,0,0" VerticalAlignment="Top" Width="180" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <Label Content="Введите имя: " HorizontalAlignment="Left" Height="37" Margin="655,79,0,0" VerticalAlignment="Top" Width="135" FontSize="18" FontFamily="Tekton Pro Cond" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBox x:Name="namebox" HorizontalAlignment="Left" Height="32" Margin="795,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
