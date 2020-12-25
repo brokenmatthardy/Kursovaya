@@ -38,6 +38,7 @@ namespace WpfApp1
 
         int minChain = 3;
         int timeend = 0;
+        public TimeSpan Interval;
 
         public MainWindow()
         {
@@ -86,7 +87,6 @@ namespace WpfApp1
             updateFiled();
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e) //генерация поля
         {
             start.Content = "Restart";
@@ -127,34 +127,41 @@ namespace WpfApp1
 
                     filed[x, y].Content = stackPnl;
                 }
-            CL = new CLogic(mast, score);
+            CL = new CLogic(mast, score, Move);
             CL.Score();
+            CL.move();
 
-            Timer = new DispatcherTimer();
-            Timer.Tick += new EventHandler(end_Tick);
-            Timer.Interval = new TimeSpan(0, 0, 1);
-            timeend = 120;
-            tim.Content = null;
-            Timer.Start();
-
-            return;
+            //Timer = null;
+            //Timer = new DispatcherTimer();
+            //Timer.Tick += new EventHandler(timer_Tick);
+            //reset();
+            //return;
         }
 
-        private void end_Tick(object sender, EventArgs e)
-        {
-            if (timeend > 0)
-            {
-                timeend--;
-                tim.Content = timeend + "s";
-            }
-            else
-            Timer.Stop();
-        }
+        //private void timer_Tick(object sender, EventArgs e)
+        //{
+        //    if (timeend > 0)
+        //    {
+        //        timeend--;
+        //        tim.Content = timeend + "s";
+        //    }
+        //    else
+        //    Timer.Stop();
+        //}
 
         private void Finde_Click(object sender, RoutedEventArgs e)
         {
             CL.checkChain(minChain);
             updateFiled();
         }
+
+        //private void reset()
+        //{
+        //    Timer.Stop();
+        //    Timer.Interval = new TimeSpan(0, 0, 1);
+        //    timeend = 100;
+        //    Timer.Start();
+        //}
+
     }
 }

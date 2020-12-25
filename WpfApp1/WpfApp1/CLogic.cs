@@ -17,11 +17,14 @@ namespace WpfApp1
         Random rnd = new Random();
         int score = 0;
         TextBlock m_score = null;
+        TextBlock Move = null;
+        int MoveCount = 30;
 
-        public CLogic(int[,] field, TextBlock m_score)
+        public CLogic(int[,] field, TextBlock m_score, TextBlock Move)
         {
             filed = field;
             this.m_score = m_score;
+            this.Move = Move;
         }
 
         public class Points
@@ -60,11 +63,20 @@ namespace WpfApp1
             {
                 if (Math.Abs(picked.X - x) == 1 || Math.Abs(picked.Y - y) == 1)
                 {
-                    int color1 = filed[picked.X, picked.Y];
-                    int color2 = filed[x, y];
-                    filed[picked.X, picked.Y] = color2;
-                    filed[x, y] = color1;
-                    picked = null;
+                    if (MoveCount == 0)
+                    {
+                        MessageBox.Show("Ходы закончились !");
+                    }
+                    else
+                    {
+                        MoveCount--;
+                        int color1 = filed[picked.X, picked.Y];
+                        int color2 = filed[x, y];
+                        filed[picked.X, picked.Y] = color2;
+                        filed[x, y] = color1;
+                        picked = null;
+                        Move.Text = " " + MoveCount;
+                    }
                 }
 
             }
@@ -146,6 +158,11 @@ namespace WpfApp1
         public void Score()
         {
             m_score.Text = null;
+        }
+
+        public void move()
+        {
+            Move.Text = null;
         }
 
         public void shift(int start, int sh) //start - начало сдвига, sh на сколько сдвигаем
