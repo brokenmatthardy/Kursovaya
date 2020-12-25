@@ -78,9 +78,16 @@ namespace WpfApp1
             int x = ind % N;
             int y = ind / N;
 
-            CL.PickUp(x, y);
-            CL.checkChain(minChain);
-            updateFiled();
+            if (namebox.Text == "")
+            {
+                MessageBox.Show("Введите имя !");
+            }
+            else
+            {
+                CL.PickUp(x, y);
+                CL.checkChain(minChain);
+                updateFiled();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) //генерация поля

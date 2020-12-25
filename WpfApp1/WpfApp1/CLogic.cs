@@ -16,6 +16,7 @@ namespace WpfApp1
         Points picked = null;
         Random rnd = new Random();
         int score = 0;
+        int counter = 0;
         TextBlock m_score = null;
         TextBlock Move = null;
         ListBox RecordList;
@@ -70,7 +71,7 @@ namespace WpfApp1
                     if (MoveCount == 0)
                     {
                         MessageBox.Show("Ходы закончились !");
-                        RecordList.Items.Add(Name.Text + ":" + score);
+                        RecordList.Items.Add(score + " очков " + " - " + Name.Text);
                     }
                     else
                     {
