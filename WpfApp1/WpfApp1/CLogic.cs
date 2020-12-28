@@ -158,7 +158,7 @@ namespace WpfApp1
                 {
                     filed[(int)p.X, (int)p.Y] = 0;
                 }
-            shift();
+            //shift();
             score += 25 * res.Count;
             m_score.Text = " " + score;
         }
@@ -170,26 +170,6 @@ namespace WpfApp1
         public void move()
         {
             Move.Text = "20";
-        }
-
-        public void shift()
-        {
-            for (int x = 0; x < 6; x++)
-                for (int y = 5; y >= 0; y--)
-                {
-                    if (filed[x, y] == 0)
-                    {
-                        for (int y2 = y - 1; y2 >= 0; y2--)
-                        {
-                            if (filed[x, y2] != 0)
-                            {
-                                filed[x, y] = filed[x, y2];
-                                filed[x, y2] = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
         }
 
         //public void shift(int start, int sh) //start - начало сдвига, sh на сколько сдвигаем
