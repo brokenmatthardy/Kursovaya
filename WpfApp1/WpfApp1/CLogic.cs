@@ -182,15 +182,37 @@ namespace WpfApp1
         //            filed[x, y] = 0;
         //        }
         //}
-        //функция заполнения новыми элементами
-        public void fill(int start)
+
+        public void shift()
         {
-            for (int x = start; x < 6; x++)
-                for (int y = start; y < 6; y++)
+            for (int y = 5; y >= 0; y--)
+                for (int x = 0; x < 6; x++)
                 {
-                    filed[x, y] = rnd.Next(1, 6);
+                    if (filed[x, y] == 0)
+                    {
+                        for (int y2 = y - 1; y2 >= 0; y2--)
+                        {
+                            if (filed[x, y2] != 0)
+                            {
+                                filed[x, y] = filed[x, y2];
+                                filed[x, y2] = 0;
+                                break;
+                            }
+                        }
+                    }
+                }
+            fill();
+        }
+        //функция заполнения новыми элементами
+        public void fill()
+        {
+            for (int x = 0; x < 6; x++)
+                for (int y = 0; y < 6; y++)
+                {
+                    if (filed[x, y] == 0)
+                        filed[x, y] = rnd.Next(1, 6);
                 }
         }
-
+        //задержка
     }
 }

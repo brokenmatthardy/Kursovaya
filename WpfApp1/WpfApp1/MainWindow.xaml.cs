@@ -139,6 +139,7 @@ namespace WpfApp1
         private void Finde_Click(object sender, RoutedEventArgs e)
         {
             CL.checkChain(minChain);
+            CL.shift();
             updateFiled();
         }
     }
