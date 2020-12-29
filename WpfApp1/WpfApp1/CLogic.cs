@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,16 +11,15 @@ namespace WpfApp1
 {
     public class CLogic
     {
-        public static int N = 6;
-
-        int[,] filed = new int[6, 6];
-        Points picked = null;
         Random rnd = new Random();
-        int score = 0;
+        Points picked = null;
         TextBlock m_score = null;
         TextBlock Move = null;
         ListBox RecordList;
         TextBox Name;
+        int[,] filed = new int[6, 6];
+        public static int N = 6;
+        int score = 0;
         int minChain = 3;
         int MoveCount = 20;
 

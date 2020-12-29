@@ -132,12 +132,5 @@ namespace WpfApp1
             CL.Score();
             CL.move();
         }
-
-        private void Finde_Click(object sender, RoutedEventArgs e)
-        {
-            CL.checkChain(minChain);
-            CL.shift();
-            updateFiled();
-        }
     }
 }
