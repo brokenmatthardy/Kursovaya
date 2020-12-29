@@ -16,7 +16,6 @@ namespace WpfApp1
         Points picked = null;
         Random rnd = new Random();
         int score = 0;
-        int counter = 0;
         TextBlock m_score = null;
         TextBlock Move = null;
         ListBox RecordList;
@@ -59,7 +58,6 @@ namespace WpfApp1
 
         public void PickUp(int x, int y) //перемещение ячеек 
         {
-
             if (picked == null)
             {
                 picked = new Points(x, y);
@@ -158,7 +156,6 @@ namespace WpfApp1
                 {
                     filed[(int)p.X, (int)p.Y] = 0;
                 }
-            //shift();
             score += 25 * res.Count;
             m_score.Text = " " + score;
         }
@@ -171,17 +168,6 @@ namespace WpfApp1
         {
             Move.Text = "20";
         }
-
-        //public void shift(int start, int sh) //start - начало сдвига, sh на сколько сдвигаем
-        //{
-        //    int i, j, x, y;
-        //    for (i = start, x = start + sh; x < 6; i++, x++)
-        //        for (j = start, y = start + sh; y < 6; j++, y++)
-        //        {
-        //            filed[i, j] = filed[x, y];
-        //            filed[x, y] = 0;
-        //        }
-        //}
 
         public void shift()
         {
