@@ -30,6 +30,7 @@ namespace WpfApp1
 
         List<BitmapImage> imgs = new List<BitmapImage>();
         Random rnd = new Random();
+        DispatcherTimer timer = new DispatcherTimer();
         CLogic CL = null;
         Button[,] filed = new Button[6, 6];
 
@@ -39,7 +40,6 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         StackPanel getPanel(BitmapImage pic)//функция для добавления картинок
@@ -55,7 +55,6 @@ namespace WpfApp1
 
         void updateFiled()//функция обновления поля
         {
-
             for (int i = 0; i < N; i++)
                 for (int j = 0; j < N; j++)
                 {
@@ -85,8 +84,6 @@ namespace WpfApp1
             else
             {
                 CL.PickUp(x, y);
-                CL.checkChain(minChain);
-                CL.shift();
                 updateFiled();
             }
         }

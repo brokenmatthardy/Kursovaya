@@ -20,6 +20,7 @@ namespace WpfApp1
         TextBlock Move = null;
         ListBox RecordList;
         TextBox Name;
+        int minChain = 3;
         int MoveCount = 20;
 
         public CLogic(int[,] field, TextBlock m_score, TextBlock Move, ListBox RecordList, TextBox Name)
@@ -79,6 +80,8 @@ namespace WpfApp1
                         filed[picked.X, picked.Y] = color2;
                         filed[x, y] = color1;
                         picked = null;
+                        checkChain(minChain);
+                        shift();
                         Move.Text = " " + MoveCount;
                     }
                 }
