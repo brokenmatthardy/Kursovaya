@@ -33,8 +33,6 @@ namespace WpfApp1
         DispatcherTimer timer = new DispatcherTimer();
         CLogic CL = null;
         Button[,] filed = new Button[6, 6];
-
-        int minChain = 3;
         public static int N = 6; //размер поля
 
         public MainWindow()
@@ -131,6 +129,14 @@ namespace WpfApp1
             CL = new CLogic(mast, score, Move, scorelist, namebox);
             CL.Score();
             CL.move();
+        }
+
+        private void Falled(object sender, EventArgs args)
+        {
+            Application.Current.Dispatcher.Invoke(delegate
+            {
+                updateFiled();
+            });
         }
     }
 }

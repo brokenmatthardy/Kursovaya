@@ -17,6 +17,7 @@ namespace WpfApp1
         TextBlock Move = null;
         ListBox RecordList;
         TextBox Name;
+        public EventHandler Falled;
         int[,] filed = new int[6, 6];
         public static int N = 6;
         int score = 0;
@@ -191,6 +192,7 @@ namespace WpfApp1
                     }
                 }
             fill();
+            StartFall();
         }
         //функция заполнения новыми элементами
         public void fill()
@@ -203,5 +205,26 @@ namespace WpfApp1
                 }
         }
         //задержка
+
+        public void StartFall()
+        {
+            Thread newThread = new Thread(new ThreadStart(FallCells));
+            newThread.Start();
+        }
+
+        private void FallCells()
+        {
+            checkChain(minChain);
+            if ()
+            {
+                while ()
+                {
+                    shift();
+                    Falled(this, null);
+                    Thread.Sleep(500);
+                }
+                StartFall();
+            }
+        }
     }
 }
