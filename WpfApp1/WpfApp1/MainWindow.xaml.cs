@@ -58,12 +58,6 @@ namespace WpfApp1
                 {
                     int color = CL.getCell(i, j);
                     StackPanel stackPnl = getPanel(imgs[color]);
-
-                    if (CL.getCell(i, j) == 1)
-                    {
-
-                    }
-
                     filed[i, j].Content = stackPnl;
 
                 }
@@ -129,14 +123,6 @@ namespace WpfApp1
             CL = new CLogic(mast, score, Move, scorelist, namebox);
             CL.Score();
             CL.move();
-        }
-
-        private void Falled(object sender, EventArgs args)
-        {
-            Application.Current.Dispatcher.Invoke(delegate
-            {
-                updateFiled();
-            });
         }
     }
 }

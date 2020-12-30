@@ -175,24 +175,28 @@ namespace WpfApp1
 
         public void shift()
         {
-            for (int y = 5; y >= 0; y--)
-                for (int x = 0; x < 6; x++)
-                {
-                    if (filed[x, y] == 0)
+            Thread t = new Thread(new ThreadStart(() =>
+            {
+                for (int y = 5; y >= 0; y--)
+                    for (int x = 0; x < 6; x++)
                     {
-                        for (int y2 = y - 1; y2 >= 0; y2--)
+                        if (filed[x, y] == 0)
                         {
-                            if (filed[x, y2] != 0)
+                            for (int y2 = y - 1; y2 >= 0; y2--)
                             {
-                                filed[x, y] = filed[x, y2];
-                                filed[x, y2] = 0;
-                                break;
+                                if (filed[x, y2] != 0)
+                                {
+                                    filed[x, y] = filed[x, y2];
+                                    filed[x, y2] = 0;
+                                    Thread.Sleep(50);
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-            fill();
-            StartFall();
+                fill();
+            }));
+            t.Start();
         }
         //функция заполнения новыми элементами
         public void fill()
@@ -205,26 +209,5 @@ namespace WpfApp1
                 }
         }
         //задержка
-
-        public void StartFall()
-        {
-            Thread newThread = new Thread(new ThreadStart(FallCells));
-            newThread.Start();
-        }
-
-        private void FallCells()
-        {
-            checkChain(minChain);
-            if ()
-            {
-                while ()
-                {
-                    shift();
-                    Falled(this, null);
-                    Thread.Sleep(500);
-                }
-                StartFall();
-            }
-        }
     }
 }
